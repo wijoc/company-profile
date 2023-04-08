@@ -41,7 +41,7 @@ Route::group(['prefix' =>'/admin'], function () {
 });
 
 Route::group(['prefix' => 'ajax', 'controller' => InboxController::class], function () {
-    Route::post('/inbox', 'store');
+    Route::post('/message', 'store');
     Route::get('/inbox', 'index');
     Route::get('/inbox/{id}', 'show');
     Route::delete('/inbox/{id}', 'destroy');

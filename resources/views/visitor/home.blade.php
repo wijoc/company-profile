@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Home</title>
 
   <!-- Google Fonts -->
@@ -14,6 +15,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
   @vite('resources/js/app.js')
 </head>
 <body>
@@ -202,34 +204,39 @@
         <span class="w-28 h-1 self-center mt-[0.25rem] bg-secondary sm:w-1/5 lg:w-[9em]"></span>
         <h3 class="text-3xl uppercase text-secondary sm:hidden">Leave A Message</h3>
       </div>
-      <div class="flex flex-row flex-wrap gap-2 px-4 sm:flex-nowrap sm:px-0 sm:gap-4 lg:px-4">
+      <form id="leave-a-msg" class="flex flex-row flex-wrap gap-2 px-4 sm:flex-nowrap sm:px-0 sm:gap-4 lg:px-4">
         <div class="flex flex-col w-full gap-2 sm:w-6/12 sm:gap-4 md:gap-5">
           <div class="form-floating">
             <label for="leave-msg-name" class="form-label">Name</label>
-            <input type="text" name="inputName" id="leave-msg-name" class="form-control" placeholder=" " />
+            <input type="text" name="name" id="leave-msg-name" class="form-control" placeholder=" " />
           </div>
           <div class="form-floating">
             <label for="leave-msg-subject" class="form-label">Subject</label>
-            <input type="text" name="inputSubject" id="leave-msg-subject" class="form-control" placeholder=" " />
+            <input type="text" name="subject" id="leave-msg-subject" class="form-control" placeholder=" " />
           </div>
           <div class="form-floating">
             <label for="leave-msg-email" class="form-label">Email</label>
-            <input type="text" name="inputEmail" id="leave-msg-email" class="form-control" placeholder=" " />
+            <input type="text" name="email" id="leave-msg-email" class="form-control" placeholder=" " />
           </div>
         </div>
         <div class="flex flex-col w-full gap-4 sm:w-6/12 sm:gap-4 md:gap-5">
           <div class="form-floating">
             <label for="leave-msg-message" class="form-label">Message</label>
-            <textarea name="" id="leave-msg-message" cols="10" rows="4" class="form-control-ta" placeholder=" "></textarea>
+            <textarea name="message" id="leave-msg-message" cols="10" rows="4" class="form-control-ta" placeholder=" "></textarea>
           </div>
-          <a href="" class="btn btn-sm btn-secondary rounded w-full flex flex-row flex-nowrap justify-center items-center gap-2 sm:py-[0.6rem] md:btn-md md:w-fit">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 fill-white">
+          <button type="submit" class="btn btn-sm btn-secondary rounded w-full flex flex-row flex-nowrap justify-center items-center gap-2 sm:py-[0.6rem] md:btn-md md:w-fit">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="send" class="w-5 h-5 fill-white">
               <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
               <path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L277.3 424.9l-40.1 74.5c-5.2 9.7-16.3 14.6-27 11.9S192 499 192 488V392c0-5.3 1.8-10.5 5.1-14.7L362.4 164.7c2.5-7.1-6.5-14.3-13-8.4L170.4 318.2l-32 28.9 0 0c-9.2 8.3-22.3 10.6-33.8 5.8l-85-35.4C8.4 312.8 .8 302.2 .1 290s5.5-23.7 16.1-29.8l448-256c10.7-6.1 23.9-5.5 34 1.4z"/>
             </svg>
-            Leave a Message</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="loading" class="hidden w-5 h-5 animate-spin fill-white">
+              <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path d="M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z"/>
+            </svg>
+            Leave a Message
+          </button>
         </div>
-      </div>
+      </form>
     </div>
   </section>
   <!-- Contact Section End -->
@@ -250,22 +257,22 @@
               <tr>
                 <td class="pr-2">Phone</td>
                 <td>:</td>
-                <td class="px-3">+62 2x xxx xxx</td>
+                <td id="foot-phone" class="px-3">+62 2x xxx xxx</td>
               </tr>
               <tr>
                 <td class="pr-2">Whatsapp</td>
                 <td>:</td>
-                <td class="px-3">+62 8xxx xxxx</td>
+                <td id="foot-whatsapp" class="px-3">+62 8xxx xxxx</td>
               </tr>
               <tr>
                 <td class="pr-2">E-mail</td>
                 <td>:</td>
-                <td class="px-3">email@xxxx.com</td>
+                <td id="foot-email" class="px-3">email@xxxx.com</td>
               </tr>
               <tr>
                 <td class="pr-2 align-top">Address</td>
                 <td class="align-top">:</td>
-                <td class="px-3 text-justify">Jl. Lokasi, Kota XXX, Prov. XXX, Indonesia</td>
+                <td id="foot-address" class="px-3 text-justify">Jl. Lokasi, Kota XXX, Prov. XXX, Indonesia</td>
               </tr>
             </table>
             <div class="flex flex-row flex-wrap justify-start gap-2">
@@ -331,5 +338,87 @@
     </section>
   </footer>
   <!-- Footer End -->
+
+
+  <script>
+    $(document).ready( function () {
+      var isSendMsg = false
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      })
+
+      $.get('/ajax/contact', function (response) {
+        $('#foot-phone').html(response[0].phone)
+        $('#foot-whatsapp').html(response[0].whatsapp)
+        $('#foot-email').html(response[0].email)
+        $('#foot-address').html(response[0].address)
+      })
+
+
+      $('#leave-a-msg').submit(function (e) {
+        e.preventDefault()
+        isSendMsg = true
+
+        var form = $(this)
+        $.ajax({
+          type: 'POST',
+          url: '/ajax/message',
+          data: form.serialize(),
+          beforeSend: function () {
+            $('#send').addClass('hidden')
+            $('#loading').removeClass('hidden')
+          },
+          success: function (response) {
+            isSendMsg = false
+            $('#send').removeClass('hidden')
+            $('#loading').addClass('hidden')
+            $('#leave-a-msg').trigger("reset");
+            window.alert('Messages Sent!');
+          },
+          statusCode: {
+            400: function (response) {
+              isSendMsg = false
+              $('#send').removeClass('hidden')
+              $('#loading').addClass('hidden')
+
+              var alert = ''
+              var error = response.responseJSON.errors
+
+              if (error.name && error.name.length > 0) {
+                alert += error.name[0] + '\n\n'
+              }
+
+              if (error.email && error.email.length > 0) {
+                alert += error.email[0] + '\n\n'
+              }
+
+              if (error.subject && error.subject.length > 0) {
+                alert += error.subject[0] + '\n\n'
+              }
+
+              if (error.message && error.message.length > 0) {
+                alert += error.message[0] + '\n\n'
+              }
+
+              window.alert(alert);
+            },
+            500: function (response) {
+              isSendMsg = false
+              $('#send').removeClass('hidden')
+              $('#loading').addClass('hidden')
+              window.alert('500 status code! server error');
+            },
+            default: function () {
+              isSendMsg = false
+              $('#send').removeClass('hidden')
+              $('#loading').addClass('hidden')
+            }
+          }
+        })
+      })
+    })
+  </script>
 </body>
 </html>
