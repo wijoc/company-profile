@@ -73,6 +73,10 @@
     @apply px-6 py-4 text-lg sm:py-2 md:py-4;
   }
 
+  .btn-disabled {
+    @apply text-gray-500 bg-gray-300 cursor-not-allowed hover:shadow-none;
+  }
+
   .btn-primary {
     @apply text-white bg-primary hover:border-2 hover:border-white;
   }

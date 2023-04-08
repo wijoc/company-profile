@@ -51,7 +51,7 @@
       <a href="/admin/services" class="sidebar-nav {{ Request::is('admin/services') ? 'active' : '' }}">Services</a>
       <a href="/admin/portfolio" class="sidebar-nav {{ Request::is('admin/portfolio') ? 'active' : '' }}">Portfolio</a>
       <a href="/admin/contact" class="sidebar-nav {{ Request::is('admin/contact') ? 'active' : '' }}">Contact</a>
-      <a href="/admin/users" class="sidebar-nav {{ Request::is('admin/users') ? 'active' : '' }}">Users</a>
+      {{-- <a href="/admin/users" class="sidebar-nav {{ Request::is('admin/users') ? 'active' : '' }}">Users</a> --}}
     </nav>
     @yield('content')
   </main>

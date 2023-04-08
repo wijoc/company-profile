@@ -48,6 +48,26 @@
         </div>
       </div>
     </div>
+    <div id="menu-item" ref="menu-item" class="fixed flex flex-col w-full h-screen transition-all duration-200 translate-y-full bg-primary/60 backdrop-blur-[2px] top-10 pt-6 px-2 sm:hidden">
+      <div class="grid grid-cols-4 gap-2">
+        <a href="#hero" class="cursor-pointer flex flex-col items-center justify-center col-span-1 py-2.5 bg-white border-gray-200 rounded border-1">
+          <i class="fa-solid fa-house-chimney"></i>
+          Home
+        </a>
+        <a href="#services" class="cursor-pointer flex flex-col items-center justify-center col-span-1 py-2.5 bg-white border-gray-200 rounded border-1">
+          <i class="fa-solid fa-info"></i>
+          Services
+        </a>
+        <a href="#portfolio" class="cursor-pointer flex flex-col items-center justify-center col-span-1 py-2.5 bg-white border-gray-200 rounded border-1">
+          <i class="fa-solid fa-bag-shopping"></i>
+          Portfolio
+        </a>
+        <a href="#contact" class="cursor-pointer flex flex-col items-center justify-center col-span-1 py-2.5 bg-white border-gray-200 rounded border-1">
+          <i class="fa-solid fa-phone"></i>
+          Contact
+        </a>
+      </div>
+    </div>
   </header>
 
   <!-- Hero Section -->
@@ -342,6 +362,21 @@
 
   <script>
     $(document).ready( function () {
+      var show = false
+      $('#menu-bar').click(function () {
+        show = !show
+        $('#menu-btn').toggleClass('menu-active')
+
+        if ($('#menu-btn').find('.menu-active').length > 0 || show) {
+          $('#menu-item').addClass('-translate-y-0')
+          $('#menu-item').removeClass('translate-y-full')
+        } else {
+          console.log('b')
+          $('#menu-item').removeClass('-translate-y-0')
+          $('#menu-item').addClass('translate-y-full')
+        }
+      })
+
       var isSendMsg = false
       $.ajaxSetup({
         headers: {
