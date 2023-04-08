@@ -57,6 +57,14 @@
     @apply flex flex-col justify-center border-[1px] border-gray-200 hover:border-secondary overflow-hidden rounded-md cursor-pointer;
   }
 
+  .sidebar-nav {
+    @apply text-base uppercase transition-all duration-100 text-primary hover:font-medium hover:text-secondary;
+  }
+
+  .sidebar-nav.active {
+    @apply border-l-[5px] border-secondary pl-3;
+  }
+
   .btn {
     @apply flex items-center justify-center gap-1 px-2 py-1 text-base font-bold text-justify transition duration-300 ease-in-out flex-nowrap hover:shadow-xl;
   }
@@ -65,12 +73,24 @@
     @apply px-6 py-4 text-lg sm:py-2 md:py-4;
   }
 
+  .btn-primary {
+    @apply text-white bg-primary hover:border-2 hover:border-white;
+  }
+
   .btn-secondary {
     @apply text-white bg-secondary hover:border-2 hover:border-white;
   }
 
+  .btn-danger {
+    @apply text-white bg-red-500 hover:border-2 hover:border-white;
+  }
+
   .btn-outline-secondary {
-    @apply transition-colors duration-150 bg-transparent border-2 border-secondary text-secondary hover:bg-secondary hover:text-white hover:border-gray-100;
+    @apply transition-colors duration-150 bg-transparent border-[1px] border-secondary text-secondary hover:bg-secondary hover:text-white hover:border-gray-100;
+  }
+
+  .btn-outline-danger {
+    @apply text-red-500 transition-colors duration-150 bg-transparent border-2 border-red-500 hover:bg-red-600 hover:text-white hover:border-gray-100;
   }
 
   .form-label {
@@ -119,5 +139,29 @@
 
   .form-floating textarea.form-control-ta {
     @apply block w-full px-3 pt-4 pb-0 text-base border border-gray-400 rounded shadow ring-gray-400 focus:outline-none focus:ring-1 focus:ring-secondary focus:border-secondary;
+  }
+
+  .card {
+    @apply overflow-hidden bg-white rounded-md;
+  }
+
+  .card-header {
+    @apply top-0 px-3 py-1 bg-gray-200 border-gray-300 border-b-[1px];
+  }
+
+  .card-body {
+    @apply px-3 py-2;
+  }
+
+  .card-footer {
+    @apply bottom-0 px-3 py-1 bg-gray-200 border-gray-300 border-t-[1px];
+  }
+
+  .card-outline-header-secondary {
+    @apply border-t-2 border-secondary;
+  }
+
+  .table tbody, th, tr, td {
+    @apply border-[1px] border-black p-2
   }
 }
